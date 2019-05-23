@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hover.sdk.api.Hover;
@@ -15,6 +16,7 @@ import com.hover.sdk.api.HoverParameters;
 public class MainActivity extends AppCompatActivity {
 
     Button button;
+    TextView balanceTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +36,16 @@ public class MainActivity extends AppCompatActivity {
                         .request("5c087725")
                         //.extra(“action_step_variable_name”, variable_value)
                         //.setEnvironment(HoverParameters.DEBUG_ENV)
+                        .hideFinalUssd(true)
+                        .style(R.style.NiniStyle)
                         .buildIntent();
 
                 startActivityForResult(i, 0);
             }
         });
+
+        balanceTextView = this.findViewById(R.id.balanceTextView);
+
 
     }
 
@@ -52,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
 
             String[] sessionTextArr = data.getStringArrayExtra("ussd_messages");
             String uuid = data.getStringExtra("uuid");
+
+            balanceTextView.setText(sessionTextArr[1]);
+
         } else if (requestCode == 0 && resultCode == Activity.RESULT_CANCELED) {
 
             Log.d("HOVER_TEST", "Result Error");

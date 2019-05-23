@@ -8,4 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="NiniStyle" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/niniPrimary</item>
+        <item name="colorPrimaryDark">@color/niniPrimaryDark</item>
+        <item name="colorAccent">@color/niniAccent</item>
+    </style>
+
 </resources>
